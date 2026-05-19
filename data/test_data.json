@@ -1,0 +1,22 @@
+{
+  "create_book_success": [
+    {
+      "title": "《Python 语言程序设计》",
+      "author": "Glenford J. Myers",
+      "isbn": "9787111181919",
+      "price": 59.9
+    },
+    {
+      "title": "《软件测试的艺术》",
+      "author": "Glenford J. Myers",
+      "isbn": "9787111444444",
+      "price": 49.0
+    },
+    {
+      "title": "《重构：改善既有代码的设计》",
+      "author": "Martin Fowler",
+      "isbn": "9787115444445",
+      "price": 69.0
+    }
+  ]
+}
