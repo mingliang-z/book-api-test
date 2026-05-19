@@ -21,7 +21,8 @@ jobs:
 
       - name: 安装依赖
         run: |
-          pip install fastapi uvicorn requests pytest pytest-html
+          pip install fastapi uvicorn requests pytest allure-pytest pytest-rerunfailures
+          
 
       - name: 启动 FastAPI 服务
         run: |
@@ -30,11 +31,18 @@ jobs:
 
       - name: 运行测试
         run: |
-          pytest testcases/ -v --html=report.html --self-contained-html
+          pytest testcases/ -v --reruns 2 --reruns-delay 1 --alluredir=allure-results
 
-      - name: 上传测试报告
+      - name: 生成 Allure 报告
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: simple-elf/allure-report-action@v1.7
         with:
-          name: test-report
-          path: report.html
+          allure_results: allure-results
+          allure_history: allure-history
+
+      - name: 部署报告到 GitHub Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: allure-history
