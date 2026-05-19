@@ -1,6 +1,5 @@
 name: API Tests
 
-
 on:
   push:
     branches: [main]
@@ -26,7 +25,6 @@ jobs:
       - name: 安装依赖
         run: |
           pip install fastapi uvicorn requests pytest allure-pytest pytest-rerunfailures
-          # 手动安装 Allure 命令行工具
           wget -q https://github.com/allure-framework/allure2/releases/download/2.30.0/allure-2.30.0.tgz
           tar -xzf allure-2.30.0.tgz
           sudo ln -s $(pwd)/allure-2.30.0/bin/allure /usr/local/bin/allure
@@ -65,6 +63,23 @@ jobs:
             仓库: ${{ github.repository }}
             分支: ${{ github.ref_name }}
             运行状态: ${{ job.status }}
-            详情: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            报告地址: https://mingliang-z.github.io/book-api-test/
           to: ${{ secrets.MAIL_TO }}
           from: ${{ secrets.MAIL_USER }}
+
+  deploy-report:
+    needs: test
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: 下载测试报告产物
+        uses: actions/download-artifact@v4
+        with:
+          name: allure-report
+          path: allure-report
+
+      - name: 部署到 GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./allure-report
