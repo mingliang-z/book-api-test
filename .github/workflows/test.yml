@@ -1,0 +1,40 @@
+name: API Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 安装 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 安装依赖
+        run: |
+          pip install fastapi uvicorn requests pytest pytest-html
+
+      - name: 启动 FastAPI 服务
+        run: |
+          nohup python run.py &
+          sleep 3  # 等待服务启动
+
+      - name: 运行测试
+        run: |
+          pytest testcases/ -v --html=report.html --self-contained-html
+
+      - name: 上传测试报告
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-report
+          path: report.html
