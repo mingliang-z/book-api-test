@@ -63,7 +63,7 @@ jobs:
             仓库: ${{ github.repository }}
             分支: ${{ github.ref_name }}
             运行状态: ${{ job.status }}
-            报告地址: https://mingliang-z.github.io/book-api-test/
+            在线报告: https://mingliang-z.github.io/book-api-test/
           to: ${{ secrets.MAIL_TO }}
           from: ${{ secrets.MAIL_USER }}
 
@@ -78,8 +78,11 @@ jobs:
           name: allure-report
           path: allure-report
 
-      - name: 部署到 GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: 部署到 Netlify
+        uses: nwtgck/actions-netlify@v2
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./allure-report
+          publish-dir: ./allure-report
+          production-deploy: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
