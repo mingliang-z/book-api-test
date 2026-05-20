@@ -1,0 +1,2 @@
+请求方式: GET
+请求路径: http://localhost:8000/books/1

@@ -1,0 +1,6 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"数据驱动的正向用例","6","新增图书 - 《重构：改善既有代码的设计》","testcases","Wed May 20 06:10:08 UTC 2026","passed","Wed May 20 06:10:08 UTC 2026","TestCreateBook","test_books","",""
+"","3","查询不存在的图书","testcases","Wed May 20 06:10:08 UTC 2026","passed","Wed May 20 06:10:08 UTC 2026","TestCreateBook","test_books","",""
+"数据驱动的正向用例","7","新增图书 - 《软件测试的艺术》","testcases","Wed May 20 06:10:08 UTC 2026","passed","Wed May 20 06:10:08 UTC 2026","TestCreateBook","test_books","",""
+"","3","缺少必填字段 title","testcases","Wed May 20 06:10:08 UTC 2026","passed","Wed May 20 06:10:08 UTC 2026","TestCreateBook","test_books","",""
+"数据驱动的正向用例","16","新增图书 - 《Python 语言程序设计》","testcases","Wed May 20 06:10:08 UTC 2026","passed","Wed May 20 06:10:08 UTC 2026","TestCreateBook","test_books","",""

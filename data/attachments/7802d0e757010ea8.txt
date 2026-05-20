@@ -1,0 +1,18 @@
+状态码: 422
+响应体: {
+  "detail": [
+    {
+      "type": "missing",
+      "loc": [
+        "body",
+        "title"
+      ],
+      "msg": "Field required",
+      "input": {
+        "author": "Glenford J. Myers",
+        "isbn": "9787111181919",
+        "price": 59.9
+      }
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+请求方式: POST
+请求路径: http://localhost:8000/books
+请求体: {
+  "title": "《Python 语言程序设计》",
+  "author": "Glenford J. Myers",
+  "isbn": "9787111181919",
+  "price": 59.9
+}

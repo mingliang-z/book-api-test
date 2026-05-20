@@ -1,0 +1,8 @@
+请求方式: POST
+请求路径: http://localhost:8000/books
+请求体: {
+  "title": "《软件测试的艺术》",
+  "author": "Glenford J. Myers",
+  "isbn": "9787111444444",
+  "price": 49.0
+}
