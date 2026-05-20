@@ -63,7 +63,7 @@ jobs:
             仓库: ${{ github.repository }}
             分支: ${{ github.ref_name }}
             运行状态: ${{ job.status }}
-            在线报告: https://mingliang-z.github.io/book-api-test/
+            在线报告: https://bejewelled-zuccutto-b797b1.netlify.app
           to: ${{ secrets.MAIL_TO }}
           from: ${{ secrets.MAIL_USER }}
 
